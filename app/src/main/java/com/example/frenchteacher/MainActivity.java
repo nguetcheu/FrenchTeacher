@@ -31,11 +31,38 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         redBtn = findViewById(R.id.redBtn);
         purpleBtn = findViewById(R.id.purpleBtn);
         greenBtn = findViewById(R.id.greenBtn);
-        
+
+        blackBtn.setOnClickListener(this);
+        yellowBtn.setOnClickListener(this);
+        redBtn.setOnClickListener(this);
+        purpleBtn.setOnClickListener(this);
+        greenBtn.setOnClickListener(this);
     }
 
     @Override
     public void onClick(View v) {
+        // Find the button by ID and play the correct sound
 
+        int clickedBtnId = v.getId();
+
+        if (clickedBtnId == R.id.blackBtn) {
+            PlaySounds(R.raw.black);
+        } else if (clickedBtnId == R.id.yellowBtn) {
+            PlaySounds(R.raw.yellow);
+        }
+        else if (clickedBtnId == R.id.redBtn) {
+            PlaySounds(R.raw.red);
+        }
+        else if (clickedBtnId == R.id.purpleBtn) {
+            PlaySounds(R.raw.purple);
+        }else if (clickedBtnId == R.id.greenBtn) {
+            PlaySounds(R.raw.green);
+        }
+    }
+
+    public void PlaySounds(int id){
+        // Launch media player with the correct id
+        MediaPlayer mediaPlayer = MediaPlayer.create(getApplicationContext(), id);
+        mediaPlayer.start();
     }
 }
